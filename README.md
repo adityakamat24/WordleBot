@@ -155,12 +155,12 @@ flowchart TD
 ### Feedback Computation Process
 ```mermaid
 flowchart TD
-    A[Start: Receive guess and secret] --> B[Initialize feedback as ['b','b','b','b','b']]
-    B --> C[For each position i: if guess[i] == secret[i]]
-    C --> D[Set feedback[i] to 'g' and mark secret[i] as used]
-    D --> E[For each position i not marked 'g']
+    A[Start: Receive guess and secret] --> B[Initialize feedback as default (all gray)]
+    B --> C[For each position i: if guess[i] equals secret[i]]
+    C --> D[Set feedback[i] to green and mark secret[i] as used]
+    D --> E[For each position i not marked green]
     E --> F[If guess[i] exists in remaining secret letters]
-    F --> G[Set feedback[i] to 'y' and mark that letter as used]
+    F --> G[Set feedback[i] to yellow and mark that letter as used]
     G --> H[Return feedback string]
 ```
 
