@@ -128,6 +128,42 @@ Further improvements could involve integrating additional machine learning techn
 **Extended Analytics:**  
 More in-depth visualizations and analytics can be added based on accumulated game data to offer richer insights.
 
+## Flowcharts
+
+### Overall Application Flow
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Initialize Qdrant Connection]
+    B --> C[Load Valid Words from CSV]
+    C --> D[Initialize WordleSolver]
+    D --> E[Set initial guess ("crate")]
+    E --> F[Display UI using Gradio]
+    F --> G[User interacts with UI]
+    G --> H[User cycles feedback for each letter]
+    H --> I[User submits feedback]
+    I --> J[Compute Feedback for guess]
+    J --> K[Prune Candidate Words based on feedback]
+    K --> L[Log game data to Qdrant]
+    L --> M{Is guess correct?}
+    M -- Yes --> N[Display Success Message & Reset Game]
+    M -- No --> O[Calculate Next Best Guess]
+    O --> P[Update UI with new guess]
+    P --> F
+```
+
+### Feedback Computation Process
+```mermaid
+flowchart TD
+    A[Start: Receive guess and secret] --> B[Initialize feedback as ['b','b','b','b','b']]
+    B --> C[For each position i: if guess[i] == secret[i]]
+    C --> D[Set feedback[i] to 'g' and mark secret[i] as used]
+    D --> E[For each position i not marked 'g']
+    E --> F[If guess[i] exists in remaining secret letters]
+    F --> G[Set feedback[i] to 'y' and mark that letter as used]
+    G --> H[Return feedback string]
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
