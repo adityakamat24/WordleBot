@@ -133,11 +133,11 @@ More in-depth visualizations and analytics can be added based on accumulated gam
 ### Overall Application Flow
 
 ```mermaid
-graph TD
+flowchart TD
     A[Start] --> B[Initialize Qdrant Connection]
     B --> C[Load Valid Words from CSV]
     C --> D[Initialize WordleSolver]
-    D --> E[Set initial guess ("crate")]
+    D --> E[Set initial guess]
     E --> F[Display UI using Gradio]
     F --> G[User interacts with UI]
     G --> H[User cycles feedback for each letter]
