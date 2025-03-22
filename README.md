@@ -71,3 +71,64 @@ The project is also hosted on [Hugging Face Spaces](https://huggingface.co/space
    ```bash
    git clone https://github.com/yourusername/advanced-wordle-solver.git
    cd advanced-wordle-solver
+
+2. **Install Dependencies::**
+   ```bash
+   pip install -r requirements.txt
+
+3. **Set Up Qdrant API Key: Ensure you have your Qdrant API key available:**
+   ```bash
+   export qdrant_api_key=YOUR_API_KEY
+
+4. **Run the Application:**
+   ```bash
+   python app.py
+
+## Project Structure
+
+**app.py:**  
+Contains the core logic for the Wordle solver, including:
+- Game logic and feedback computation.
+- Advanced guess strategy and candidate pruning.
+- Qdrant integration for logging and historical stats.
+- Gradio UI components and data visualizations.
+
+**requirements.txt:**  
+Lists the Python packages required to run the project:
+- gradio
+- pandas
+- plotly
+- qdrant-client
+
+**wordle.csv:**  
+A CSV file with a column named `word` containing valid 5-letter words used by the solver.
+
+## Usage
+
+**Start a New Game:**  
+Launch the application locally or visit the [Hugging Face Spaces demo](https://huggingface.co/spaces/Lazer24/WordleBot) to start the game. The UI will automatically display the initial guess.
+
+**Submit Feedback:**  
+Cycle the feedback (gray → yellow → green) for each letter using the buttons below the guess. Once satisfied, click **Submit Feedback** to update the solver’s state.
+
+**View Visualizations:**  
+The letter frequency heatmap and confidence chart update based on the remaining candidate words, providing insights into the solver’s decision-making process.
+
+**Restart Game:**  
+Click the **Start New Game** button to reset the solver and begin again.
+
+## Future Enhancements
+
+**Enhanced Vector Usage:**  
+Currently, a dummy vector is used for Qdrant logging. Future iterations may incorporate meaningful vector representations for deeper analysis.
+
+**Refined Heuristics:**  
+Further improvements could involve integrating additional machine learning techniques to improve the guessing strategy even further.
+
+**Extended Analytics:**  
+More in-depth visualizations and analytics can be added based on accumulated game data to offer richer insights.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
